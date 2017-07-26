@@ -8,6 +8,5 @@ angular.module('myContacts', [
 ]).
 config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
   $locationProvider.hashPrefix('!');
-
   $routeProvider.otherwise({redirectTo: '/contacts'});
 }]);
