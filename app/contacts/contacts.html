@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" ng-controller="ContactsCtrl">
 <div class="large-10 columns">
     <h3> Your Contacts {{contacts.length}}</h3>
     <table>
@@ -6,8 +6,8 @@
             <tr>
             <th width="200px">Name</th>
             <th width="200px">Company</th>
-            <th width="200px">Email</th>
-            <th width="200px">Action</th>
+            <th width="25%">Email</th>
+            <th width="25%">Action</th>
             </tr>
         </thead>
         <tbody>
@@ -15,8 +15,8 @@
             <td>John Doe</td>
             <td>Some Company</td>
             <td>something@something.com</td>
-            <td><a class ="button tiny">Edit</a></td>
-            <td> <a class="button tiny alert"></a></td>    
+            <td><a class ="button tiny">Edit</a>
+                <a class="button tiny alert">Delete</a></td>    
             <td></td>    
         </tbody>
     </table>
