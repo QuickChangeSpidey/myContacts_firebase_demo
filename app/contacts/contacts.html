@@ -1,6 +1,22 @@
 <div class="row" ng-controller="ContactsCtrl">
     <div class="large-10 columns">
         <div data-alert ng-show="msg" class="alert-box">{{msg}}</div>
+        
+        
+        <div class="row" ng-show="contactShow">
+            <div class="panel">
+                <h3>{{name}}</h3>
+                <ul>
+                    <li><strong>Company </strong>{{company}}</li>
+                     <li><strong>Email Address </strong>{{email}}</li>
+                     <li><strong>Work </strong>{{work_phone}}</li>
+                     <li><strong>Home </strong>{{home_phone}}</li>
+                     <li><strong>Mobile </strong>{{mobile_phone}}</li>
+                     <li>{{street_address}}</li>
+                     <li>{{city}}, {{state}}, {{zipcode}}</li>
+                </ul>
+            </div>
+        </div>
 
     <form ng-submit="addFormSubmit()" ng-show="addFormShow">
         <h3>Add Contact</h3>
@@ -61,7 +77,7 @@
         
         <div class="large-6 columns">
             <label>Zip:
-            <input type="text" ng-model="zip" placeholder="Zipcode" required>
+            <input type="text" ng-model="zipcode" placeholder="Zipcode" required>
             </label>
         </div>
         
@@ -71,6 +87,80 @@
             </div>
         </div>
     </form>
+        
+        
+        <form ng-submit="showEditForm()" ng-show="editFormShow">
+        <h3>Edit Contact</h3>
+        <div class="large-6 columns">
+            <label>Name:
+            <input type="text" ng-model="name" placeholder="Contact Name" required>
+            </label>
+        </div>
+        
+         <div class="large-6 columns">
+            <label>Email:
+            <input type="text" ng-model="email" placeholder="Contact Email" required>
+            </label>
+        </div>
+    
+         <div class="large-6 columns">
+            <label>Company:
+            <input type="text" ng-model="company" placeholder="Company Name" required>
+            </label>
+        </div>
+    
+         <div class="large-6 columns">
+            <label>Work Phone:
+            <input type="text" ng-model="work_phone" placeholder="Work Phone" required>
+            </label>
+        </div>
+    
+        
+         <div class="large-6 columns">
+            <label>Mobile Phone:
+            <input type="text" ng-model="mobile_phone" placeholder="Mobile Phone" required>
+            </label>
+        </div>
+        
+         <div class="large-6 columns">
+            <label>Home Phone:
+            <input type="text" ng-model="home_phone" placeholder="Home Phone" required>
+            </label>
+        </div>
+        
+        <div class="large-6 columns">
+            <label>Street Address:
+            <input type="text" ng-model="street_address" placeholder="Street Address" required>
+            </label>
+        </div>
+        
+        <div class="large-6 columns">
+            <label>City:
+            <input type="text" ng-model="city" placeholder="City" required>
+            </label>
+        </div>
+        
+         <div class="large-6 columns">
+            <label>State:
+            <input type="text" ng-model="state" placeholder="State" required>
+            </label>
+        </div>
+        
+        <div class="large-6 columns">
+            <label>Zip:
+            <input type="text" ng-model="zipcode" placeholder="Zipcode" required>
+            </label>
+        </div>
+        
+        <div class="row">
+            <div class="large-12 columns">
+                <input type="submit" value="Edit contact" class="button">
+            </div>
+        </div>
+    </form>
+        
+        
+        
     
     
     
@@ -86,8 +176,8 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-click="showContact(contact)" ng-repeat="contact in contacts">
-            <td>{{contact.name}}</td>
+            <tr ng-repeat="contact in contacts">
+            <td><a ng-click="showContact(contact)">{{contact.name}}</a></td>
             <td>{{contact.company}}</td>
             <td>{{contact.email}}</td>
             <td><a class ="button tiny">Edit</a>
@@ -101,6 +191,8 @@
 <div class="small-12 large-2 columns">
     <a class="button large" ng-click="showAddForm()" ng-hide="addFormShow">+</a>
     <a class="button large" ng-click="hide()" ng-show="addFormShow">-</a>
+    <a class="button large" ng-click="hide()" ng-show="contactShow">-</a>
+
 
 </div>
 </div>
