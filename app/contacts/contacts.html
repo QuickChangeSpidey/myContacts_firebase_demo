@@ -86,13 +86,13 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-            <td>John Doe</td>
-            <td>Some Company</td>
-            <td>something@something.com</td>
+            <tr ng-click="showContact(contact)" ng-repeat="contact in contacts">
+            <td>{{contact.name}}</td>
+            <td>{{contact.company}}</td>
+            <td>{{contact.email}}</td>
             <td><a class ="button tiny">Edit</a>
                 <a class="button tiny alert">Delete</a></td>    
-            <td></td>    
+            </tr>   
         </tbody>
     </table>
 </div>
