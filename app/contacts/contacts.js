@@ -22,15 +22,13 @@ angular.module('myContacts.contacts', ['ngRoute','firebase'])
 .controller('ContactsCtrl', ['$scope', '$firebaseArray' ,function($scope,$firebaseArray) {
     
   var ref = firebase.database().ref();
-    
   $scope.contacts = $firebaseArray(ref);
-    
   $scope.showAddForm = function(){
       $scope.addFormShow = true;
   }
   
   $scope.showEditForm = function(contact){
-      $scope.editFormShow = true;
+       $scope.editFormShow = true;
        $scope.id = contact.$id;
        $scope.name = contact.name;
        $scope.email= contact.email;
@@ -49,7 +47,7 @@ angular.module('myContacts.contacts', ['ngRoute','firebase'])
       $scope.contactShow = false;
   }
   
-  $scope.EditFormSubmit = function(){
+  $scope.editFormSubmit = function(){
       var id = $scope.id;
       var record = $scope.contacts.$getRecord(id);
       record.name = $scope.name;
@@ -62,7 +60,6 @@ angular.module('myContacts.contacts', ['ngRoute','firebase'])
       record.address[0].city = $scope.city;
       record.address[0].state = $scope.state;
       record.address[0].zipcode = $scope.zipcode;
-
       $scope.contacts.$save(record).then(function(ref){
           console.log(ref.key);
           clearFields();
@@ -124,6 +121,14 @@ angular.module('myContacts.contacts', ['ngRoute','firebase'])
         $scope.msg = "Contact Added";
         
     });
+  }
+  
+  $scope.removeContact = function(contact){
+      
+      $scope.contacts.$remove(contact);
+      $scope.msg = "Contact Removed";
+      
+      
   }
   
   
